@@ -11,16 +11,13 @@ function App() {
   const [address, setAddress] = useState(null);
   const [ipAddress, setIpAddress] = useState("");
 
-  const checkIpAddress =
+  const checkIp =
     /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
-  const checkDomain =
-    /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/;
 
   useEffect(() => {
-    console.log("ddddddddd", process.env.REACT_APP_IPIFY_API_KEY);
     axios
       .get(
-        `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_IPIFY_API_KEY}&ipAddress=77.6.21.229`
+        `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_IPIFY_API_KEY}`
       )
       .then((res) => {
         setAddress(res);
@@ -35,13 +32,7 @@ function App() {
       .get(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${
           process.env.REACT_APP_IPIFY_API_KEY
-        }&${
-          checkIpAddress.test(ipAddress)
-            ? `ipAddress=${ipAddress}`
-            : checkDomain.test(ipAddress)
-            ? `domain=${ipAddress}`
-            : ""
-        }`
+        }&${checkIp.test(ipAddress) ? `ipAddress=${ipAddress}` : ""}`
       )
       .then((res) => {
         setAddress(res);
@@ -104,9 +95,18 @@ function App() {
                       {address.data.ip}
                     </li>
                     <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold ">City and Region</div>
-                      {address.data.location.city},{" "}
+                      <div className="fw-bold ">Country</div>
+
+                      {address.data.location.country}
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between ">
+                      <div className="fw-bold ">Region</div>
+
                       {address.data.location.region}
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between ">
+                      <div className="fw-bold ">City</div>
+                      {address.data.location.city}
                     </li>
                     <li className="list-group-item d-flex justify-content-between ">
                       <div className="fw-bold">Timezone</div>

@@ -17,7 +17,8 @@ export default function MarkerPosition({ address }) {
     <>
       <Marker icon={icon} position={position}>
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          {address.data.isp} <br />
+          {address.data.location.lat} {address.data.location.lng}
         </Popup>
       </Marker>
     </>
