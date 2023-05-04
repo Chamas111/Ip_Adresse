@@ -27,7 +27,9 @@
 .App-link {
   color: #61dafb;
 }
-
+/* .custom-table {
+  opacity: 0.001;
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,11 +41,17 @@
 /*-----*/
 
 body {
-  background-image: url("https://blog.dheerajverma.in/wp-content/uploads/2018/10/css-gradient-e1595456078187.jpg");
+  background-image: url("https://neosnetworks.com/wp-content/uploads/2021/04/Connection-lines_low-res-842x590.jpg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 
+.font-size {
+  margin-top: 150px;
+  margin-bottom: 250px;
+  font-size: larger;
+}
 .field {
   display: flex;
   position: realtive;

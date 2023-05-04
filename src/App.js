@@ -61,7 +61,7 @@ function App() {
             value={ipAddress}
             onChange={(e) => setIpAddress(e.target.value)}
           />
-          <button type="button" id="search">
+          <button className="btn btn-outline-primary" type="button" id="search">
             Go!
           </button>
         </form>
@@ -88,36 +88,65 @@ function App() {
                     <MarkerPosition address={address} />
                   </MapContainer>
                 </div>
-                <div className="col">
-                  <ul className="list-group ">
-                    <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold ">IP</div>
+                {/*         <div className="col table table-bordered table-dark">
+                  <ul className="">
+                    <li className=" d-flex justify-content-between ">
+                      <div className="">IP</div>
                       {address.data.ip}
                     </li>
-                    <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold ">Country</div>
+                    <li className=" d-flex justify-content-between">
+                      <div className=" ">Country</div>
 
                       {address.data.location.country}
                     </li>
-                    <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold ">Region</div>
+                    <li className=" d-flex justify-content-between ">
+                      <div className=" ">Region</div>
 
                       {address.data.location.region}
                     </li>
-                    <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold ">City</div>
+                    <li className=" d-flex justify-content-between ">
+                      <div className=" ">City</div>
                       {address.data.location.city}
                     </li>
-                    <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold">Timezone</div>
+                    <li className=" d-flex justify-content-between ">
+                      <div className="">Timezone</div>
                       {address.data.location.timezone}
                     </li>
                     <li className="list-group-item d-flex justify-content-between ">
-                      <div className="fw-bold">ISP</div>
+                      <div className="">ISP</div>
                       {address.data.isp}
                     </li>
                   </ul>
-                </div>
+                </div> */}
+                <table className="col table table-sm table-borderless text-warning fw-bold font-size text-start">
+                  <tbody>
+                    <tr>
+                      <th scope="row">IP</th>
+                      <td>{address.data.ip}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Country</th>
+                      <td> {address.data.location.country}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Region</th>
+                      <td colspan="2">{address.data.location.region}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">City</th>
+                      <td colspan="2">{address.data.location.city}</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">Timezone</th>
+                      <td colspan="2">{address.data.location.timezone}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ISP</th>
+                      <td colspan="2">{address.data.isp}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </>
